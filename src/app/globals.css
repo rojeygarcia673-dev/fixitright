@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f2f1f1;
+  --surface: #ffffff;
+  --surface-2: #f7f5f5;
+  --ink: #161211;
+  --muted: #6e6462;
+  --line: #e4dede;
+  --accent: #cc1626;
+  --accent-strong: #e4141b;
+  --accent-ink: #ffffff;
+  --ok: #227a4b;
+  --graphite: #0a0a0b;
+  --on-graphite: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0a0b;
+    --surface: #151416;
+    --surface-2: #1e1d20;
+    --ink: #f6f5f5;
+    --muted: #9e9a9c;
+    --line: #2b2a2e;
+    --accent: #f5313d;
+    --accent-strong: #e4141b;
+    --accent-ink: #ffffff;
+    --ok: #54c081;
+    --graphite: #0a0a0b;
+    --on-graphite: #ffffff;
+  }
+}
+
+@layer base {
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+}

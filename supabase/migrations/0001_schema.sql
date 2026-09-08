@@ -59,7 +59,11 @@ begin
     on conflict (kind, yr) do update set last = doc_counters.last + 1
     returning last into n;
   return p_kind || '-' || y::text || '-' || lpad(n::text, 4, '0');
-end $$ language plpgsql;
+end $$ language plpgsql security definer set search_path = public;
+
+-- Lock the counter table: only the security-definer function may touch it.
+-- (RLS on with no policy blocks direct anon/authenticated API access.)
+alter table doc_counters enable row level security;
 
 -- ---------- profiles (mirrors auth.users) ----------
 create table if not exists profiles (
